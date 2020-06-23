@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit } from '@angular/core';
 import { ContactService } from './shared/contact.service';
 import { IContact } from './shared/contact.model';
 import { Observable, throwError } from 'rxjs';
@@ -24,16 +24,16 @@ export class ContactsMainComponent implements OnInit {
 
   removeContact(name: string){
     this.contactService.removeContact(name);
-    let index:number = this.contacts.findIndex(c => c.name === name);
+    const index: number = this.contacts.findIndex(c => c.name === name);
     this.contacts.splice(index, 1);
     this.toastr.success(`Contact ${name} successfully removed.`);
   }
 
   addContact(contact: IContact){
     this.contactService.addContact(contact).subscribe(
-      contact => {
-        this.contacts.push(contact);
-        this.toastr.success(`Contact ${contact.name} successfully saved.`);
+      c => {
+        this.contacts.push(c);
+        this.toastr.success(`Contact ${c.name} successfully saved.`);
       },
       error => this.handleHttpError(error, 'Error sending contact to the server')
     );
@@ -46,7 +46,7 @@ export class ContactsMainComponent implements OnInit {
     );
   }
 
-  handleHttpError(error:any, title?:string) {
+  handleHttpError(error: any, title?: string) {
     console.error(title, error);
     this.toastr.error(error.message, title);
     return throwError(error);

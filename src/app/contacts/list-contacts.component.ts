@@ -20,18 +20,21 @@ export class ListContactsComponent implements OnInit {
 
   }
 
-  getContactInfo(email:string, phone: string) {
+  getContactInfo(email: string, phone: string) {
     if ((!email || email.trim().length === 0) &&
-        (!phone || phone.trim().length !== 0))
+        (!phone || phone.trim().length !== 0)) {
       return 'no contact information';
+    }
 
-    let output:string = '';
-    if (email != undefined && email.trim() !== "")
+    let output = '';
+    if (email !== undefined && email.trim() !== '') {
        output += email;
+    }
 
-    if (phone != undefined && phone.trim() !== "") {
-      if (output != '')
+    if (phone !== undefined && phone.trim() !== '') {
+      if (output !== '') {
         output += ' | ';
+      }
 
       output += phone;
     }
