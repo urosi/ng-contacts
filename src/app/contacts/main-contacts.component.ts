@@ -6,9 +6,9 @@ import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-contacts-main',
-  templateUrl: './contacts-main.component.html',
+  templateUrl: './main-contacts.component.html',
   styleUrls: [
-    './contacts-main.component.css'
+    './main-contacts.component.css'
   ]
 })
 
@@ -19,7 +19,7 @@ export class ContactsMainComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getContactsFromServiceSorted();
+    this.getContactsFromService();
   }
 
   removeContact(name: string){
@@ -35,22 +35,20 @@ export class ContactsMainComponent implements OnInit {
         this.contacts.push(contact);
         this.toastr.success(`Contact ${contact.name} successfully saved.`);
       },
-      error => this.handleHttpError(error)
+      error => this.handleHttpError(error, 'Error sending contact to the server')
     );
   }
 
-  getContactsFromServiceSorted(){
-    this.contactService.getContacts().subscribe({
-        next: contacts => this.contacts = contacts,
-        error: err => console.error('Observer got an error: ' + err),
-        complete: () => console.log('Observer got a complete notification'),
-      }
+  getContactsFromService(){
+    this.contactService.getContacts().subscribe(
+        contacts => this.contacts = contacts,
+        err => this.handleHttpError(err, 'Error getting contacts from the server')
     );
   }
 
-  handleHttpError(error:any) {
-    console.log("Error in handleHttpError.", error);
-    this.toastr.error(error.message);
+  handleHttpError(error:any, title?:string) {
+    console.log(title, error);
+    this.toastr.error(error.message, title);
     return throwError(error);
   }
 }

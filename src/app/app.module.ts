@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AppComponent } from './app.component';
 import { AddContactComponent } from './contacts/add-contact.component';
 import { ListContactsComponent } from './contacts/list-contacts.component';
-import { ContactsMainComponent } from './contacts/contacts-main.component'
+import { ContactsMainComponent } from './contacts/main-contacts.component'
 
 
 @NgModule({
