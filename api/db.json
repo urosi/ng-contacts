@@ -1,0 +1,34 @@
+{
+  "contacts": [
+    {
+      "name": "This is the name",
+      "gender": "female",
+      "email": "test@gmail.com",
+      "phone": ""
+    },
+    {
+      "name": "abc def",
+      "gender": "male",
+      "email": "abc.def@gmail.com",
+      "phone": "000 000 000"
+    },
+    {
+      "name": "234",
+      "gender": "male",
+      "email": "",
+      "phone": ""
+    },
+    {
+      "name": "FDSF",
+      "gender": "male",
+      "email": "",
+      "phone": ""
+    },
+    {
+      "name": "test",
+      "gender": "male",
+      "email": "jflakfjsdflkajf.sdfalskf@gmail.com",
+      "phone": "234324"
+    }
+  ]
+}

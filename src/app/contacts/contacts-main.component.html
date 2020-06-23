@@ -1,0 +1,8 @@
+<div class="main-container">
+  <div class="card card-add">
+    <app-add-contact (addContact)="addContact($event)"></app-add-contact>
+  </div>
+  <div class="card card-list">
+    <app-list-contacts class="list-contacts" *ngIf="contacts?.length > 0" [contacts]="contacts" (removeContact)="removeContact($event)"></app-list-contacts>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+.main-container {
+  margin-top:30px;
+}
+.card {
+  margin:0px 80px 15px 80px;
+  padding:25px 32px;
+}
+
+.card-add {
+  padding-top:15px;
+}
+
+.card-list {
+  margin-bottom: 0px;
+}

@@ -1,0 +1,24 @@
+{
+  "contacts": [
+    {
+      "name": "Mike",
+      "gender": "male",
+      "email": "mike@gmail.com",
+      "phone": "023 212 222"
+    },
+    {
+      "name": "Nik",
+      "gender": "male"
+    },
+    {
+      "name": "Rose",
+      "gender": "female",
+      "email": "rose@gmail.com"
+    },
+    {
+      "name": "Julia",
+      "gender": "female",
+      "phone": "023 434-323"
+    }
+  ]
+}
