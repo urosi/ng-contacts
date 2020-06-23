@@ -5,7 +5,7 @@ import { Observable, throwError } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-contacts-main',
+  selector: 'app-main-contacts',
   templateUrl: './main-contacts.component.html',
   styleUrls: [
     './main-contacts.component.css'
