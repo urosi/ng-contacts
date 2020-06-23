@@ -19,7 +19,7 @@ export class ContactsMainComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getContactsFromService();
+    this.getContactsFromServiceSorted();
   }
 
   removeContact(name: string){
@@ -33,16 +33,20 @@ export class ContactsMainComponent implements OnInit {
     this.contactService.addContact(contact).subscribe(
       c => {
         this.contacts.push(c);
+        this.sortContacts();
         this.toastr.success(`Contact ${c.name} successfully saved.`);
       },
       error => this.handleHttpError(error, 'Error sending contact to the server')
     );
   }
 
-  getContactsFromService(){
+  getContactsFromServiceSorted(){
     this.contactService.getContacts().subscribe(
-        contacts => this.contacts = contacts,
-        err => this.handleHttpError(err, 'Error getting contacts from the server')
+      contacts => {
+        this.contacts = contacts;
+        this.sortContacts();
+      },
+      err => this.handleHttpError(err, 'Error getting contacts from the server')
     );
   }
 
@@ -50,5 +54,13 @@ export class ContactsMainComponent implements OnInit {
     console.error(title, error);
     this.toastr.error(error.message, title);
     return throwError(error);
+  }
+
+  sortContacts() {
+    this.contacts = this.contacts.sort((c1, c2) => {
+      if (c1.name < c2.name) { return - 1; }
+      if (c1.name > c2.name) { return 1; }
+      return 0;
+    });
   }
 }
