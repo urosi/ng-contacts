@@ -19,12 +19,6 @@
       "name": "Julia",
       "gender": "female",
       "phone": "023 434-323"
-    },
-    {
-      "name": "Abcd",
-      "gender": "male",
-      "email": "",
-      "phone": ""
     }
   ]
 }
