@@ -11,7 +11,6 @@ export function emailExistsAsyncValidator(contactService: ContactService) {
 
     return contactService.findContactByEmail(c.value).pipe(
       map((contacts:any) => {
-        console.log('validator email.', contacts);
         return contacts.length === 0 ? null : { emailExists: true }
       })
     );

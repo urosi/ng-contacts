@@ -47,7 +47,7 @@ export class ContactsMainComponent implements OnInit {
   }
 
   handleHttpError(error:any, title?:string) {
-    console.log(title, error);
+    console.error(title, error);
     this.toastr.error(error.message, title);
     return throwError(error);
   }

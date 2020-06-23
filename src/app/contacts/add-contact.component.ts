@@ -1,5 +1,5 @@
-import { Component, OnInit, Output } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { Component, Output } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Gender } from './shared/contact.model'
 import { IContact } from './shared/contact.model'
 import { ContactService } from './shared/contact.service';
@@ -17,7 +17,7 @@ import { emailExistsAsyncValidator } from './shared/email-exists-async.validator
     .form-group > label { margin-bottom: 5px;}
   `]
 })
-export class AddContactComponent implements OnInit {
+export class AddContactComponent {
   contactForm: FormGroup;
   gender = Gender;
   nameExits:boolean;
@@ -30,18 +30,11 @@ export class AddContactComponent implements OnInit {
     this.initContactForm();
   }
 
-
-  ngOnInit(): void {
-    console.log('enum value: ' + Gender.Female);
-    console.log(this.contactForm.value);
-  }
-
   onSave() {
     this.submitted = true;
     this.nameExits = false;
 
     if (this.contactForm.invalid){
-      console.log('form invalid');
       return;
     }
 
