@@ -15,8 +15,10 @@ import { emailExistsAsyncValidator } from './shared/email-exists-async.validator
     em { float:right; color:#e05c65; padding-left: 10px; }
     .text-muted { font-size: 12px; }
     .form-group > label { margin-bottom: 5px;}
+    .error input {background-color:#e3c3c5}
   `]
 })
+
 export class AddContactComponent {
   contactForm: FormGroup;
   gender = Gender;

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactService } from './shared/contact.service';
 import { IContact } from './shared/contact.model';
-import { Observable, throwError } from 'rxjs';
+import { throwError } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -58,8 +58,10 @@ export class ContactsMainComponent implements OnInit {
 
   sortContacts() {
     this.contacts = this.contacts.sort((c1, c2) => {
-      if (c1.name < c2.name) { return - 1; }
-      if (c1.name > c2.name) { return 1; }
+      const c1NameLower = c1.name.toLowerCase();
+      const c2NameLower = c2.name.toLowerCase();
+      if (c1NameLower < c2NameLower) { return - 1; }
+      if (c1NameLower > c2NameLower) { return 1; }
       return 0;
     });
   }

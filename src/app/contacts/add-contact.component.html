@@ -1,5 +1,5 @@
 <form [formGroup]="contactForm" (ngSubmit)="onSave()">
-  <div class="form-group">
+  <div class="form-group" [ngClass]="{'error': contactForm.controls.name.invalid && (contactForm.controls.name.dirty || submitted)}">
     <label for="name">Name *</label>
     <em *ngIf="(contactForm.controls.name.dirty || submitted) && contactForm.controls.name.errors?.required">Name is required</em>
     <em *ngIf="contactForm.controls.name.errors?.nameExists">Name already exists</em>
@@ -20,7 +20,7 @@
 
   <h5 style="font-size:17px;" class="border-bottom font-weight-bold pb-1 pt-3">Contact information</h5>
   <div class="form-row">
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-6" [ngClass]="{'error': contactForm.controls.email.invalid && contactForm.controls.email.touched}">
       <label for="email">Email</label>
       <em *ngIf="contactForm.controls.email.errors?.emailExists">Email already exists</em>
       <em *ngIf="contactForm.controls.email.touched && contactForm.controls.email.errors?.pattern">Enter a valid email address</em>
@@ -29,13 +29,13 @@
     </div>
     <div class="form-group col-md-6">
       <label for="phone">Telephone</label>
-      <input type="tel" class="form-control" id="phone" formControlName="phone" maxlength="15">
+      <input type="tel" class="form-control" id="phone" formControlName="phone" maxlength="17">
     </div>
   </div>
 
 
   <div class="text-right">
-    <button class="btn btn-light mr-2" (click)="onCancel()">Cancel</button>
+    <button type="button" class="btn btn-light mr-2" (click)="onCancel()">Cancel</button>
     <button type="submit" class="btn btn-primary" [disabled]="contactForm.invalid && submitted">Save</button>
   </div>
 </form>
