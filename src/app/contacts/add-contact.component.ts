@@ -42,9 +42,6 @@ export class AddContactComponent {
     };
 
     this.addContact.emit(contact);
-
-    // reset form back to the original;
-    this.initContactForm();
   }
 
   onCancel() {

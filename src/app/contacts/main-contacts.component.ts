@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ContactService } from './shared/contact.service';
 import { IContact } from './shared/contact.model';
 import { throwError } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
+import { AddContactComponent } from './add-contact.component';
 
 @Component({
   selector: 'app-main-contacts',
@@ -11,6 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 
 export class ContactsMainComponent implements OnInit {
+  @ViewChild(AddContactComponent) addContactComponent: AddContactComponent;
   contacts: IContact[];
 
   constructor(private contactService: ContactService, private toastr: ToastrService) {
@@ -32,6 +34,7 @@ export class ContactsMainComponent implements OnInit {
       c => {
         this.contacts.push(c);
         this.sortContacts();
+        this.addContactComponent.initContactForm();
         this.toastr.success(`Contact ${c.name} successfully saved.`);
       },
       error => this.handleHttpError(error, 'Error sending contact to the server')
