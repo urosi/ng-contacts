@@ -10,7 +10,6 @@ import { AddContactComponent } from './contacts/add-contact.component';
 import { ListContactsComponent } from './contacts/list-contacts.component';
 import { ContactsMainComponent } from './contacts/main-contacts.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
