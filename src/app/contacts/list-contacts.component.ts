@@ -5,9 +5,7 @@ import { EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-list-contacts',
   templateUrl: './list-contacts.component.html',
-  styles: [`
-    .alert:last-child { margin-bottom:0px; }
-  `]
+  styleUrls: ['./list-contacts.component.css']
 })
 
 export class ListContactsComponent implements OnInit {

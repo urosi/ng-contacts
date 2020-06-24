@@ -19,6 +19,24 @@
       "name": "Julia",
       "gender": "female",
       "phone": "023 434-323"
+    },
+    {
+      "name": "Test 2",
+      "gender": "male",
+      "email": "",
+      "phone": ""
+    },
+    {
+      "name": "test",
+      "gender": "male",
+      "email": "",
+      "phone": ""
+    },
+    {
+      "name": "test test",
+      "gender": "female",
+      "email": "test@test.com",
+      "phone": "test"
     }
   ]
 }

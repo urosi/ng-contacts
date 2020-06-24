@@ -7,9 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-main-contacts',
   templateUrl: './main-contacts.component.html',
-  styleUrls: [
-    './main-contacts.component.css'
-  ]
+  styleUrls: ['./main-contacts.component.css']
 })
 
 export class ContactsMainComponent implements OnInit {
