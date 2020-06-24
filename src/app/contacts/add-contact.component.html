@@ -20,7 +20,7 @@
 
   <h5 style="font-size:17px;" class="border-bottom font-weight-bold pb-1 pt-3">Contact information</h5>
   <div class="form-row">
-    <div class="form-group col-md-6" [ngClass]="{'error': contactForm.controls.email.invalid && contactForm.controls.email.touched}">
+    <div class="form-group col-md-6" [ngClass]="{'error': (contactForm.controls.email.invalid && contactForm.controls.email.touched) || contactForm.controls.email.errors?.emailExists}">
       <label for="email">Email</label>
       <em *ngIf="contactForm.controls.email.errors?.emailExists">Email already exists</em>
       <em *ngIf="contactForm.controls.email.touched && contactForm.controls.email.errors?.pattern">Enter a valid email address</em>
