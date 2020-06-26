@@ -1,4 +1,4 @@
-import { Component, Output } from '@angular/core';
+import { Component, Output, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Gender } from './shared/contact.model';
 import { IContact } from './shared/contact.model';
@@ -6,6 +6,8 @@ import { ContactService } from './shared/contact.service';
 import { EventEmitter } from '@angular/core';
 import { nameExistsAsyncValidator } from './shared/name-exists-async.validator';
 import { emailExistsAsyncValidator } from './shared/email-exists-async.validator';
+import { AddContactResetService } from './shared/add-contact-reset.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-add-contact',
@@ -13,16 +15,18 @@ import { emailExistsAsyncValidator } from './shared/email-exists-async.validator
   styleUrls: ['./add-contact.component.css']
 })
 
-export class AddContactComponent {
+export class AddContactComponent implements OnInit, OnDestroy {
   contactForm: FormGroup;
   gender = Gender;
   nameExits: boolean;
   submitted = false;
+  private subscription: Subscription;
 
   @Output() addContact: EventEmitter<IContact> = new EventEmitter<IContact>();
 
   constructor(private fb: FormBuilder,
-              private contactService: ContactService) {
+              private contactService: ContactService,
+              private addContactResetService: AddContactResetService) {
     this.initContactForm();
   }
 
@@ -57,5 +61,15 @@ export class AddContactComponent {
                   emailExistsAsyncValidator(this.contactService)],
       phone: ['']
     });
+  }
+
+  ngOnInit() {
+    this.subscription = this.addContactResetService.data.subscribe(
+      (data) => this.initContactForm()
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }
